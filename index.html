@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -313,16 +313,16 @@
                     <h3 class="font-bold text-lg border-b pb-2 mb-4">Contexto y Persona General</h3>
                     <div class="grid grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">Empresa / Producto</label>
-                            <input type="text" id="clientName" class="w-full p-2 border rounded focus:ring-2 focus:ring-rag-blue outline-none" placeholder="Ej: Venta de autos eléctricos BYD" oninput="autoSaveField('clientName', this.value)">
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Empresa / Producto</label>
+                            <input type="text" id="clientName" class="w-full p-2 border rounded focus:ring-2 focus:ring-rag-blue outline-none text-slate-900" placeholder="Ej: Venta de autos eléctricos BYD" oninput="SessionManager.autoSave('clientName', this.value)">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-slate-600 mb-1">Nombre y Rol del Agente</label>
-                            <input type="text" id="agentName" class="w-full p-2 border rounded focus:ring-2 focus:ring-rag-blue outline-none" value="Sofía, Agente Setter" placeholder="Ej: Sofía, Asesora Virtual" oninput="autoSaveField('agentName', this.value)">
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">Nombre y Rol del Agente</label>
+                            <input type="text" id="agentName" class="w-full p-2 border rounded focus:ring-2 focus:ring-rag-blue outline-none text-slate-900" value="Sofía, Agente Setter" placeholder="Ej: Sofía, Asesora Virtual" oninput="SessionManager.autoSave('agentName', this.value)">
                         </div>
                         <div class="col-span-2">
-                            <label class="block text-sm font-medium text-slate-600 mb-1">System Prompt Base (Tonalidad y Reglas de Comportamiento)</label>
-                            <textarea id="basePrompt" rows="4" class="w-full p-3 border rounded text-sm font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-rag-blue outline-none" placeholder="Define aquí el tono, límites éticos y objetivos macro..." oninput="autoSaveField('basePrompt', this.value)"></textarea>
+                            <label class="block text-sm font-semibold text-slate-700 mb-1">System Prompt Base (Tonalidad y Reglas de Comportamiento)</label>
+                            <textarea id="basePrompt" rows="4" class="w-full p-3 border rounded text-sm font-mono bg-slate-50 focus:bg-white focus:ring-2 focus:ring-rag-blue outline-none text-slate-900" placeholder="Define aquí el tono, límites éticos y objetivos macro..." oninput="SessionManager.autoSave('basePrompt', this.value)"></textarea>
                         </div>
                     </div>
                     <!-- Botón genérico de ejemplo, aunque esta sección es de inputs -->
@@ -382,7 +382,7 @@
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
                     <h3 class="text-lg font-bold text-slate-800 mb-4">Instrucciones Específicas del Módulo RAG</h3>
                     <label class="block text-sm font-medium text-slate-600 mb-1">RAG System Prompt Adicional</label>
-                    <textarea id="ragPrompt" rows="4" class="w-full p-3 border rounded text-sm font-mono bg-slate-900 text-green-400 focus:outline-none" placeholder="Instrucciones para el motor de respuestas." oninput="autoSaveField('ragPrompt', this.value)"></textarea>
+                    <textarea id="ragPrompt" rows="4" class="w-full p-3 border rounded text-sm font-mono bg-slate-900 text-green-400 focus:outline-none" placeholder="Instrucciones para el motor de respuestas." oninput="SessionManager.autoSave('ragPrompt', this.value)"></textarea>
                 </div>
 
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
@@ -767,19 +767,19 @@
             <div class="grid grid-cols-3 gap-3">
                 <div class="col-span-3">
                     <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Pregunta del Agente (Editable)</label>
-                    <input type="text" class="w-full p-2 text-sm border rounded" placeholder="Ej: ¿Cuál es tu presupuesto?" value="${q}">
+                    <input type="text" class="qa-question w-full p-2 text-sm border rounded text-slate-900" placeholder="Ej: ¿Cuál es tu presupuesto?" value="${q}" style="font-size: 0.875rem;">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-slate-500 uppercase mb-1">Respuesta Esperada / Intención</label>
-                    <input type="text" class="w-full p-2 text-sm border rounded" value="${a}" placeholder="Ej: {budget_range} capturado">
+                    <input type="text" class="qa-answer w-full p-2 text-sm border rounded text-slate-900" value="${a}" placeholder="Ej: {budget_range} capturado" style="font-size: 0.875rem;">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-blue-600 uppercase mb-1">Entidades a Capturar (Separar con coma)</label>
-                    <input type="text" class="w-full p-2 text-sm border rounded" value="${entities}" placeholder="Ej: budget_range, timeline">
+                    <input type="text" class="qa-entities w-full p-2 text-sm border rounded text-slate-900" value="${entities}" placeholder="Ej: budget_range, timeline" style="font-size: 0.875rem;">
                 </div>
                 <div>
                     <label class="block text-xs font-bold text-green-600 uppercase mb-1">Activa Checkpoint (CP)</label>
-                    <input type="text" class="w-full p-2 text-sm border rounded bg-green-50" value="${cp}" placeholder="Ej: CP3">
+                    <input type="text" class="qa-cp w-full p-2 text-sm border rounded bg-green-50 text-slate-900" value="${cp}" placeholder="Ej: CP3" style="font-size: 0.875rem;">
                 </div>
             </div>
         `;
@@ -809,23 +809,23 @@
                 <div class="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-200 grid grid-cols-3 gap-3 text-sm">
                     <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-1">1. Alcance / Scopo</label>
-                        <input type="text" value="${s.scope || ''}" class="w-full p-1 text-sm rounded bg-white border" id="scope-${s.code}">
+                        <input type="text" value="${s.scope || ''}" class="w-full p-1 text-sm rounded bg-white border text-slate-900" id="scope-${s.code}">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-1">2. Objetivo Principal</label>
-                        <input type="text" value="${s.objective || ''}" class="w-full p-1 text-sm rounded bg-white border" id="objective-${s.code}">
+                        <input type="text" value="${s.objective || ''}" class="w-full p-1 text-sm rounded bg-white border text-slate-900" id="objective-${s.code}">
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-slate-500 uppercase mb-1">3. Base de Datos</label>
-                        <input type="text" value="${s.database || 'N/A'}" class="w-full p-1 text-sm rounded bg-white border" id="database-${s.code}">
+                        <input type="text" value="${s.database || 'N/A'}" class="w-full p-1 text-sm rounded bg-white border text-slate-900" id="database-${s.code}">
                     </div>
 
                     <div class="col-span-3 mt-3">
                         <div id="custom-fields-${s.code}" class="space-y-2">
                             ${(s.custom_fields || []).map((f, idx) => `
-                                <div class="grid grid-cols-6 gap-2 items-center">
-                                    <div class="col-span-2 text-xs text-slate-600 font-medium">${f.label}</div>
-                                    <div class="col-span-4"><input id="custom-${s.code}-${f.key}" type="text" value="${f.value||''}" class="w-full p-1 text-sm rounded bg-white border custom-field-input" placeholder="${f.placeholder||''}"></div>
+                                <div class="grid grid-cols-3 gap-2 items-center">
+                                    <div class="col-span-1 text-sm text-slate-600 font-medium">${f.label}</div>
+                                    <div class="col-span-2"><input id="custom-${s.code}-${f.key}" type="text" value="${f.value||''}" class="w-full p-1 text-sm rounded bg-white border custom-field-input text-slate-900" placeholder="${f.placeholder||''}"></div>
                                 </div>
                             `).join('')}
                         </div>
@@ -853,9 +853,9 @@
                     <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 space-y-3">
                         <h5 class="text-sm font-bold text-blue-700"><i class="fa-solid fa-code-branch mr-1"></i> CONFIGURACIÓN RAG</h5>
                         <label class="block text-xs font-bold text-blue-600 uppercase">⚠️ Pre-Condición RAG</label>
-                        <input type="text" class="w-full p-2 text-sm border rounded" placeholder="Ej: Scoring Entidad > 40" id="rag-precondition-${s.code}" value="${s.rag_config.pre_condition}">
+                        <input type="text" class="w-full p-2 text-sm border rounded text-slate-900" placeholder="Ej: Scoring Entidad > 40" id="rag-precondition-${s.code}" value="${s.rag_config.pre_condition}">
                         <label class="block text-xs font-bold text-blue-600 uppercase mt-2">⚙️ Estrategia de Consulta</label>
-                        <input type="text" class="w-full p-2 text-sm border rounded" placeholder="Ej: Semantic Search, Max Chunks: 3, Temp: 0.2" id="rag-strategy-${s.code}" value="${s.rag_config.strategy}">
+                        <input type="text" class="w-full p-2 text-sm border rounded text-slate-900" placeholder="Ej: Semantic Search, Max Chunks: 3, Temp: 0.2" id="rag-strategy-${s.code}" value="${s.rag_config.strategy}">
                     </div>
                 ` : '';
 
@@ -952,11 +952,13 @@
 
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-all relative">
                     <h4 class="text-lg font-bold text-slate-800">${s.title}</h4>
-                    <div class="flex items-center space-x-2 mt-1 mb-2">
-                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-${s.color}-100 text-${s.color}-800 uppercase">Rol: ${s.role}</span>
-                        <span class="text-xs font-bold px-2 py-0.5 rounded bg-orange-50 text-orange-600">KPI Objetivo: ${s.kpi}</span>
-                        <span class="text-xs text-slate-500 font-medium">Tiempo Máx:</span>
-                        <input type="text" value="${s.time_limit}" class="text-xs p-1 rounded border w-32 text-center bg-slate-50" id="time-limit-${s.code}">
+                    <div class="flex items-center space-x-2 mt-1 mb-2 text-xs">
+                        <label for="role-${s.code}" class="font-medium text-slate-600">Rol:</label>
+                        <input type="text" id="role-${s.code}" value="${s.role}" class="p-1 border rounded w-40 bg-slate-50 text-slate-900" style="font-size: 0.875rem;">
+                        <label for="kpi-${s.code}" class="font-medium text-slate-600 ml-3">KPI Objetivo:</label>
+                        <input type="text" id="kpi-${s.code}" value="${s.kpi}" class="p-1 border rounded w-40 bg-slate-50 text-slate-900" style="font-size: 0.875rem;">
+                        <label for="time-limit-${s.code}" class="font-medium text-slate-600 ml-3">Tiempo Máx:</label>
+                        <input type="text" id="time-limit-${s.code}" value="${s.time_limit}" class="p-1 border rounded w-24 text-center bg-slate-50 text-slate-900" style="font-size: 0.875rem;">
                     </div>
                     
                     ${metadataBlock}
@@ -1031,10 +1033,10 @@
         tbodyEnt.innerHTML = entities.map((e, index) => `
             <tr>
                 <td class="p-3 border-b"><input type="text" value="${e.key}" class="w-full bg-transparent outline-none font-mono text-blue-600"></td>
-                <td class="p-3 border-b"><select class="bg-transparent"><option ${e.type=='String'?'selected':''}>String</option><option ${e.type=='Number'?'selected':''}>Number</option><option ${e.type=='Date'?'selected':''}>Date</option><option ${e.type=='NumberRange'?'selected':''}>NumberRange</option></select></td>
-                <td class="p-3 border-b"><input type="text" value="${e.validation}" class="w-full bg-transparent outline-none text-sm"></td>
-                <td class="p-3 border-b text-center"><input type="number" value="${e.score}" class="w-16 bg-blue-50 text-blue-700 text-center rounded px-2 font-bold"></td>
-                <td class="p-3 border-b"><input type="text" value="${e.required_in}" class="w-16 bg-slate-100 rounded px-2 text-center"></td>
+                <td class="p-3 border-b"><select class="bg-transparent text-slate-900"><option ${e.type=='String'?'selected':''}>String</option><option ${e.type=='Number'?'selected':''}>Number</option><option ${e.type=='Date'?'selected':''}>Date</option><option ${e.type=='NumberRange'?'selected':''}>NumberRange</option></select></td>
+                <td class="p-3 border-b"><input type="text" value="${e.validation}" class="w-full bg-transparent outline-none text-sm text-slate-900"></td>
+                <td class="p-3 border-b text-center"><input type="number" value="${e.score}" class="w-16 bg-blue-50 text-blue-800 text-center rounded px-2 font-bold"></td>
+                <td class="p-3 border-b"><input type="text" value="${e.required_in}" class="w-16 bg-slate-100 rounded px-2 text-center text-slate-900"></td>
                 <td class="p-3 border-b"><button class="text-red-400 hover:text-red-600 no-print btn-visible-remove" onclick="this.closest('tr').remove()">×</button></td>
             </tr>
         `).join('');
@@ -1045,9 +1047,9 @@
         const tbodySrc = document.querySelector('#sourcesTable tbody');
         tbodySrc.innerHTML = sources.map((s, index) => `
             <tr>
-                <td class="p-3 border-b"><input type="text" value="${s.name}" class="w-full bg-transparent outline-none font-bold"></td>
-                <td class="p-3 border-b"><input type="text" value="${s.type} / ${s.url}" class="w-full bg-transparent outline-none text-sm font-mono"></td>
-                <td class="p-3 border-b"><select class="bg-slate-50 rounded"><option ${s.priority=='Alta'?'selected':''}>Alta</option><option ${s.priority=='Media'?'selected':''}>Media</option><option ${s.priority=='Baja'?'selected':''}>Baja</option></select></td>
+                <td class="p-3 border-b"><input type="text" value="${s.name}" class="w-full bg-transparent outline-none font-bold text-slate-900"></td>
+                <td class="p-3 border-b"><input type="text" value="${s.type} / ${s.url}" class="w-full bg-transparent outline-none text-sm font-mono text-slate-900"></td>
+                <td class="p-3 border-b"><select class="bg-slate-50 rounded text-slate-900"><option ${s.priority=='Alta'?'selected':''}>Alta</option><option ${s.priority=='Media'?'selected':''}>Media</option><option ${s.priority=='Baja'?'selected':''}>Baja</option></select></td>
                 <td class="p-3 border-b"><button class="text-red-400 hover:text-red-600 no-print btn-visible-remove" onclick="this.closest('tr').remove()">×</button></td>
             </tr>
         `).join('');
@@ -1058,10 +1060,10 @@
         const tbodyScore = document.getElementById('scoring-tbody');
         tbodyScore.innerHTML = checkpoints.map((cp, index) => `
             <tr class="hover:bg-slate-50 border-b border-slate-100">
-                <td class="p-4 font-mono text-xs font-bold text-slate-500"><input type="text" value="${cp.id}" class="w-10 bg-slate-100 text-center rounded"></td>
-                <td class="p-4 text-slate-700 font-medium"><input type="text" value="${cp.desc}" class="w-full bg-transparent"></td>
-                <td class="p-4"><input type="text" value="${cp.stage}" class="w-16 bg-slate-100 text-center rounded"></td>
-                <td class="p-4 text-right"><input type="number" value="${cp.score}" class="w-16 bg-blue-50 text-blue-700 text-center rounded font-bold"></td>
+                <td class="p-4 font-mono text-xs font-bold text-slate-500"><input type="text" value="${cp.id}" class="w-10 bg-slate-100 text-center rounded text-slate-900"></td>
+                <td class="p-4 text-slate-700 font-medium"><input type="text" value="${cp.desc}" class="w-full bg-transparent text-slate-900"></td>
+                <td class="p-4"><input type="text" value="${cp.stage}" class="w-16 bg-slate-100 text-center rounded text-slate-900"></td>
+                <td class="p-4 text-right"><input type="number" value="${cp.score}" class="w-16 bg-blue-50 text-blue-800 text-center rounded font-bold"></td>
                 <td class="p-4"><button class="text-red-400 hover:text-red-600 no-print btn-visible-remove" onclick="this.closest('tr').remove()">×</button></td>
             </tr>
         `).join('');
@@ -1072,11 +1074,11 @@
         const tbodyQA = document.querySelector('#qaLibraryTable tbody');
         tbodyQA.innerHTML = qaLibrary.map((qa, index) => `
             <tr>
-                <td class="p-3 border-b"><input type="text" value="${qa.q}" class="w-full bg-transparent outline-none font-bold"></td>
-                <td class="p-3 border-b"><input type="text" value="${qa.a}" class="w-full bg-transparent outline-none text-sm"></td>
-                <td class="p-3 border-b text-center"><input type="number" value="${qa.score}" class="w-16 bg-blue-50 text-blue-700 text-center rounded px-2 font-bold"></td>
+                <td class="p-3 border-b"><input type="text" value="${qa.q}" class="w-full bg-transparent outline-none font-bold text-slate-900"></td>
+                <td class="p-3 border-b"><input type="text" value="${qa.a}" class="w-full bg-transparent outline-none text-sm text-slate-900"></td>
+                <td class="p-3 border-b text-center"><input type="number" value="${qa.score}" class="w-16 bg-blue-50 text-blue-800 text-center rounded px-2 font-bold"></td>
                 <td class="p-3 border-b">
-                    <select class="bg-slate-50 rounded">
+                    <select class="bg-slate-50 rounded text-slate-900">
                         <option value="E1" ${qa.stage=='E1'?'selected':''}>E1 - Validador</option>
                         <option value="E2" ${qa.stage=='E2'?'selected':''}>E2 - Consultor</option>
                         <option value="E3" ${qa.stage=='E3'?'selected':''}>E3 - Agendador</option>
@@ -1189,10 +1191,10 @@
 
             const stageData = {
                 code: s.code,
-                role: s.role,
-                kpi_objective: s.kpi, 
+                role: document.getElementById(`role-${s.code}`)?.value || s.role,
+                kpi_objective: document.getElementById(`kpi-${s.code}`)?.value || s.kpi, 
                 // Capture the time limit field
-                time_limit: document.getElementById(`time-limit-${s.code}`) ? document.getElementById(`time-limit-${s.code}`).value : s.time_limit,
+                time_limit: document.getElementById(`time-limit-${s.code}`)?.value || s.time_limit,
                 
                 // Capture new metadata fields
                 scope: document.getElementById(`scope-${s.code}`).value,
@@ -1901,4 +1903,4 @@
 </script>
 
 </body>
-</html>
+                            </html>
